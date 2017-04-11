@@ -1,6 +1,7 @@
 package com.benjamin.interact.movieLibrary.entity;
 
-import java.util.Date;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.UUID;
 
 /**
@@ -24,35 +25,35 @@ public class Movie {
     private String title;
 
     /**
-     * Date of the movie
+     * release year of the movie
      */
-    private Date releaseDate;
+    private int releaseYear;
 
     /**
      * Private constructor to create a movie entity.
      * @param id of the movie
      * @param title of the movie
-     * @param releaseDate of the movie
+     * @param releaseYear of the movie
      */
-    private Movie(UUID id, String title, Date releaseDate){
+    private Movie(UUID id, String title, int releaseYear){
         this.id = id;
         this.title = title;
-        this.releaseDate = releaseDate;
+        this.releaseYear = releaseYear;
     }
 
     /**
      * Public constructor to create a movie entity.
      * The constructor generate a randomUUID for each movie.
      * @param title of the movie
-     * @param releaseDate of the movie
+     * @param releaseYear of the movie
      */
-    public Movie(String title, Date releaseDate){
-        this(UUID.randomUUID(), title, releaseDate);
+    public Movie(String title, int releaseYear){
+        this(UUID.randomUUID(), title, releaseYear);
     }
 
     /**
      * Accessor to the Id
-     * @return id of the mvie
+     * @return id of the movie
      */
     public UUID getId(){
         return this.id ;
@@ -67,10 +68,25 @@ public class Movie {
     }
 
     /**
-     * Accessor to the realease date
-     * @return the realease date of the movie
+     * Accessor to the release year
+     * @return the release year of the movie
      */
-    public Date getReleaseDate(){
-        return this.releaseDate ;
+    public int getReleaseDate(){
+        return this.releaseYear ;
     }
-}
+
+    /**
+     * Setter for the title of the movie
+     * @param title of the movie
+     */
+    public void setTitle(String title){
+        this.title =title;
+    }
+
+    /**
+     * Setter for the release year
+     * @param releaseYear of the movie
+     */
+    public void setReleaseDate(int releaseYear){
+        this.releaseYear = releaseYear;
+    }
