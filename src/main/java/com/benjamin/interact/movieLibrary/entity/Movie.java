@@ -49,7 +49,7 @@ public class Movie {
      * @param title       of the movie
      * @param releaseYear of the movie
      */
-    public Movie(String title, int releaseYear) {
+    public Movie(@JsonProperty("title")String title, @JsonProperty("releaseYear") int releaseYear) {
         this(UUID.randomUUID(), title, releaseYear);
     }
 
