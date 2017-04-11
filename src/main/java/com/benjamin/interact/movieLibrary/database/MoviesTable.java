@@ -14,6 +14,7 @@ import java.util.UUID;
  * @version 1.0
  *
  */
+@Component
 public class MoviesTable {
 
     /**
