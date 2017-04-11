@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.Year;
 import java.util.Set;
 import java.util.UUID;
 
@@ -40,6 +41,23 @@ public class MoviesController {
     @RequestMapping(value = "/movies", method = RequestMethod.POST, consumes = "application/json")
     public Movie addMovie(@RequestBody Movie movie){
         return moviesService.add(movie);
+    }
+
+    @RequestMapping(value = "/movies/{id}", method = RequestMethod.PUT, consumes = "application/json")
+    public Movie updateMovie(@PathVariable("id") String id, @RequestBody Movie movie){
+        return moviesService.update(UUID.fromString(id), movie).
+                orElseThrow(() -> new NotFoundException());
+    }
+
+    @RequestMapping(value = "/movies/{id}", method = RequestMethod.DELETE, consumes = "application/json")
+    public Movie removeMovie(@PathVariable("id") String id){
+        return moviesService.remove(UUID.fromString(id)).
+                orElseThrow(() -> new NotFoundException());
+    }
+
+    @RequestMapping(value = "/movies/releaseyear/{releaseYear}", method = RequestMethod.GET, consumes = "application/json")
+    public Set<Movie> selectByYear(@PathVariable("releaseYear") int releaseYear){
+        return moviesService.selectByYear(Year.of(releaseYear));
     }
 
 }
