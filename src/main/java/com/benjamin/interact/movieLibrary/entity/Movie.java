@@ -98,4 +98,37 @@ public class Movie {
         this.releaseYear = releaseYear;
     }
 
+    /**
+     * Compare any object to the Movie.
+     * @param obj to compare
+     * @return true if the object is a Movie and all the fields are the same, false otherwise
+     */
+    @Override
+    public boolean equals(Object obj) {
+        if(obj instanceof Movie) {
+            Movie m = (Movie) obj;
+            return this.getId().equals(m.getId()) &&
+                    this.getReleaseDate() == m.getReleaseDate() &&
+                    this.getTitle().equals(m.getTitle()) ;
+        }
+        return false ;
+    }
+
+    /**
+     * Hashcode of a movie extends from the UUID hashcode
+     * @return unique hashcode
+     */
+    @Override
+    public int hashCode() {
+        return id.hashCode();
+    }
+
+    /**
+     * String which represents our Movie POJO
+     * @return string with all fields
+     */
+    @Override
+    public String toString() {
+        return "Movie[" + this.getId() + ", " + this.getTitle() + ", " + this.getReleaseDate() +  "]";
+    }
 }
