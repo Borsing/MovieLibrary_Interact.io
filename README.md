@@ -1,11 +1,13 @@
 # Movie Library Interact.io
 
 The project is a Micro Service for a movie Library with basics CRUD operation.
+
 The Application exposes a RESTful API.
 
 ## Requirement
 
 Install maven
+
 Install Java JDK 1.8
 
 ## Run the project
