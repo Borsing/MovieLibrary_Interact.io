@@ -18,7 +18,7 @@ mvn spring-boot:run
 
 If you run the micro service on your localhost :
 
-# Add a movie
+## Add a movie
 
 ```
 POST http://localhost:8080/movies
@@ -30,13 +30,13 @@ Json body :
 }
 ```
 
-# Select All movies
+## Select All movies
 
 ```
 GET http://localhost:8080/movies
 ```
 
-# Select a specific movie
+## Select a specific movie
 
 ```
 GET http://localhost:8080/movies/{id}
@@ -47,7 +47,7 @@ For a movie with the id : 02451bd3-9c03-4626-87dc-69cf5c267a79
 GET http://localhost:8080/movies/02451bd3-9c03-4626-87dc-69cf5c267a79
 ```
 
-# Select all the movies from a release year
+## Select all the movies from a release year
 
 ```
 GET http://localhost:8080/movies/releaseyear/{year}
@@ -58,7 +58,7 @@ For the year : 1980
 GET http://localhost:8080/movies/releaseyear/1980
 ```
 
-# Update a movie
+## Update a movie
 
 ```
  PUT http://localhost:8080/movies/{id}
@@ -70,7 +70,7 @@ GET http://localhost:8080/movies/releaseyear/1980
  }
 ```
 
-# Delete a movie
+## Delete a movie
 
 ```
  DELETE http://localhost:8080/movies/{id}
