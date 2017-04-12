@@ -49,7 +49,7 @@ public class MoviesController {
      * HttpMethod : GET
      * URL : /movies/{id}
      * @param id of the movie
-     * @return the movie if it exits, throw a RunTimeException otherwise
+     * @return the movie if it exits, throw a NotFoundException otherwise
      */
     @RequestMapping(value = "/movies/{id}", method = RequestMethod.GET)
     public Movie selectMovie(@PathVariable("id") String id){
@@ -76,7 +76,7 @@ public class MoviesController {
      * URL : /movies/{id}
      * @param id of the movie
      * @param movie with the updated fields.
-     * @return the movie updated if it exits, throw a RunTimeException otherwise
+     * @return the movie updated if it exits, throw a NotFoundException otherwise
      */
     @RequestMapping(value = "/movies/{id}", method = RequestMethod.PUT, consumes = "application/json")
     public Movie updateMovie(@PathVariable("id") String id, @RequestBody Movie movie){
@@ -89,9 +89,9 @@ public class MoviesController {
      * HttpMethod : DELETE
      * URL : /movies/{id}
      * @param id of the movie
-     * @return the movie deleted if it exits, throw a RunTimeException otherwise
+     * @return the movie deleted if it exits, throw a NotFoundException otherwise
      */
-    @RequestMapping(value = "/movies/{id}", method = RequestMethod.DELETE, consumes = "application/json")
+    @RequestMapping(value = "/movies/{id}", method = RequestMethod.DELETE)
     public Movie removeMovie(@PathVariable("id") String id){
         return moviesService.remove(UUID.fromString(id)).
                 orElseThrow(() -> new NotFoundException());
@@ -104,7 +104,7 @@ public class MoviesController {
      * @param releaseYear of the movies
      * @return the movies of a specific year
      */
-    @RequestMapping(value = "/movies/releaseyear/{releaseYear}", method = RequestMethod.GET, consumes = "application/json")
+    @RequestMapping(value = "/movies/releaseyear/{releaseYear}", method = RequestMethod.GET)
     public Set<Movie> selectByYear(@PathVariable("releaseYear") int releaseYear){
         return moviesService.selectByYear(Year.of(releaseYear));
     }
